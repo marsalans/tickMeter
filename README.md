@@ -1,7 +1,8 @@
+# PUBG tickMeter
 
 PUBG tickrate and ping meter
 
-#Hogyan használd:
+# Hogyan használd:
 
 - Telepítsd fel a WinPCAP-et, és a RivaTuner Statistics Server-t (RTSS), a telepítőket megtalálod a letöltésben
 - Fordítsd le a forrást, vagy töltsd le a programot
@@ -10,7 +11,7 @@ PUBG tickrate and ping meter
 - ???
 - Profit
 
-#How to use:
+# How to use:
 
 - Install WinPCAP and RivaTuner Statistics Server (RTSS), binaries are provided
 - Build the source, or download the binaries
@@ -19,6 +20,6 @@ PUBG tickrate and ping meter
 - ???
 - Profit
 
-#Letöltés/Download:
+# Letöltés/Download:
 
-- [PUBG tickMeter](https://github.com/xHeaven/tickMeter/files/2104952/tickMeter.zip)
+[PUBG tickMeter](https://github.com/xHeaven/tickMeter/files/2104952/tickMeter.zip)
