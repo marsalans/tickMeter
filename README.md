@@ -34,4 +34,4 @@ PUBG tickrate and ping meter
 
 # Credits:
 - xHeavenHF
-- Siarhei Astapchyk
+- dvman8bit
