@@ -33,5 +33,5 @@ PUBG tickrate and ping meter
 - [Microsoft Visual C++ 2013 Redistributable Package](https://www.microsoft.com/en-us/download/details.aspx?id=40784)
 
 # Credits:
-xHeavenHF
-Siarhei Astapchyk
+- xHeavenHF
+- Siarhei Astapchyk
