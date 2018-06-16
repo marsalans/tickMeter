@@ -527,7 +527,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "tickMeterForm";
-            this.Text = "monoFlat_ThemeContainer1";
+            this.Text = "PUBG tick- and ping meter";
             this.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.tickMeterForm_FormClosed);
             this.panelBackground.ResumeLayout(false);
