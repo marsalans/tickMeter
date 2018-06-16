@@ -26,7 +26,9 @@ namespace tickMeterRecode
 {
     public partial class tickMeterForm : Form
     {
-#region variables
+        #region variables
+        public static int programVersion = 123;
+
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HT_CAPTION = 0x2;
 
@@ -101,6 +103,7 @@ namespace tickMeterRecode
         string[] ipAddress = { "IP cím: ", "IP address: " };
         string[] tickRate = { "Tickrate: ", "Tickrate: " };
         string[] ping_ = { "Ping: ", "Ping: " };
+        string[] updateAvailable = { "| Frissítés elérhető, kattints ide!", "| Update available, click here!" };
 
         #endregion
         [DllImportAttribute("user32.dll")]
@@ -152,6 +155,8 @@ namespace tickMeterRecode
                     dropdownNetworkCard.AddItem("Unknown");
                 }
             }
+
+            checkVersion();
         }
 
         public string IPRequestHelper(string url)
@@ -245,6 +250,7 @@ namespace tickMeterRecode
             labelPing.Text = ping_[index] + pingLabel.Text;
             labelUPDL.Text = uploadDownload[index] + updlLabel.Text;
             labelStatus.Text = (index == 0) ? statusHU[statusIndex] : statusEN[statusIndex];
+            labelUpdate.Text = updateAvailable[index];
         }
 
         private void PacketHandler(Packet packet)
@@ -638,6 +644,35 @@ namespace tickMeterRecode
             {
                 SetWindowPos(this.Handle, HWND_TOPMOST, 0, 0, 0, 0, TOPMOST_FLAGS);
             }
+        }
+
+        private int getVersion()
+        {
+            int version;
+            using (WebClient wc = new WebClient())
+            {
+                try
+                {
+                    version = Convert.ToInt32(wc.DownloadString("https://raw.githubusercontent.com/xHeaven/tickMeter/master/version"));
+                } catch { version = 0; }
+            }
+            return version;
+        }
+
+        private void checkVersion()
+        {
+            if (programVersion < getVersion())
+            {
+                labelUpdate.Visible = true;
+            } else
+            {
+                labelUpdate.Visible = false;
+            }
+        }
+
+        private void labelUpdate_Click(object sender, EventArgs e)
+        {
+            Process.Start("https://github.com/xHeaven/tickMeter/releases");
         }
     }
 }

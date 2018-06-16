@@ -67,6 +67,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
+            this.labelUpdate = new ns1.BunifuCustomLabel();
             this.panelBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -437,6 +438,7 @@
             // panelTitle
             // 
             this.panelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(32)))), ((int)(((byte)(41)))));
+            this.panelTitle.Controls.Add(this.labelUpdate);
             this.panelTitle.Controls.Add(this.pictureboxExit);
             this.panelTitle.Controls.Add(this.pictureBox1);
             this.panelTitle.Controls.Add(this.labelTitle);
@@ -479,7 +481,7 @@
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(135, 20);
             this.labelTitle.TabIndex = 0;
-            this.labelTitle.Text = "tickMeter - v1.2.2";
+            this.labelTitle.Text = "tickMeter - v1.2.3";
             // 
             // timer1
             // 
@@ -502,6 +504,19 @@
             this.timer3.Enabled = true;
             this.timer3.Interval = 5000;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
+            // 
+            // labelUpdate
+            // 
+            this.labelUpdate.AutoSize = true;
+            this.labelUpdate.Font = new System.Drawing.Font("Century Gothic", 11F);
+            this.labelUpdate.ForeColor = System.Drawing.Color.White;
+            this.labelUpdate.Location = new System.Drawing.Point(195, 11);
+            this.labelUpdate.Name = "labelUpdate";
+            this.labelUpdate.Size = new System.Drawing.Size(230, 20);
+            this.labelUpdate.TabIndex = 3;
+            this.labelUpdate.Text = "| Frissítés elérhető, kattints ide!";
+            this.labelUpdate.Visible = false;
+            this.labelUpdate.Click += new System.EventHandler(this.labelUpdate_Click);
             // 
             // tickMeterForm
             // 
@@ -567,6 +582,7 @@
         private System.Windows.Forms.Label tickrateLabel;
         private ns1.BunifuDropdown dropdownCover;
         private System.Windows.Forms.Label labelCountry;
+        private ns1.BunifuCustomLabel labelUpdate;
     }
 }
 
