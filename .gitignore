@@ -1,5 +1,5 @@
 *.exe
-*.user
+*.csproj.user
 bin/
 obj/
 .vs/
