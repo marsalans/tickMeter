@@ -653,7 +653,7 @@ namespace tickMeterRecode
             {
                 try
                 {
-                    version = Convert.ToInt32(wc.DownloadString("https://raw.githubusercontent.com/xHeaven/tickMeter/master/version"));
+                    version = Convert.ToInt32(wc.DownloadString("https://pastebin.com/raw/Bxq2aH37"));
                 } catch { version = 0; }
             }
             return version;
