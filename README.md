@@ -2,6 +2,8 @@
 
 PUBG tickrate and ping meter
 
+![Picture of the program](https://i.imgur.com/88VBE83.png)
+
 # Hogyan használd:
 
 - Telepítsd fel a WinPCAP-et, és a RivaTuner Statistics Server-t (RTSS), a telepítőket megtalálod a letöltésben
