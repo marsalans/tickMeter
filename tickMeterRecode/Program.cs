@@ -4,6 +4,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+#pragma warning disable CS0618
+
 namespace tickMeterRecode
 {
     static class Program
@@ -16,6 +18,7 @@ namespace tickMeterRecode
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            AppDomain.CurrentDomain.AppendPrivatePath("dependencies");
             Application.Run(new tickMeterForm());
         }
     }

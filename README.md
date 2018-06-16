@@ -22,7 +22,7 @@ PUBG tickrate and ping meter
 
 # Letöltés/Download:
 
-[PUBG tickMeter](https://github.com/xHeaven/tickMeter/files/2104952/tickMeter.zip)
+[PUBG tickMeter](https://github.com/xHeaven/tickMeter/files/2107874/tickMeter_v1.2.2.zip)
 
 # Követelmények/Requirements:
 - [WinPcap 4.1.3](http://www.winpcap.org/)

@@ -43,7 +43,7 @@ namespace tickMeterRecode
                 RunRiva();
             }
 
-            string path = "./rivatuner.dll"; // x64 only, since PUBG is x64, so why would you run it on an x86 machine
+            string path = "./dependencies/rivatuner/rivatuner.dll"; // x64 only, since PUBG is x64, so why would you run it on an x86 machine
 
             unsafe
             {

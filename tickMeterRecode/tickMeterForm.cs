@@ -19,6 +19,7 @@ using System.Net;
 using System.Diagnostics;
 using System.IO;
 using System.Globalization;
+using System.Reflection;
 
 #pragma warning disable CS1998
 
