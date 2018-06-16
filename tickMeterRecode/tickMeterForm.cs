@@ -8,7 +8,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-using Newtonsoft.Json;
 using PcapDotNet.Core;
 using PcapDotNet.Analysis;
 using System.Text.RegularExpressions;
@@ -46,32 +45,23 @@ namespace tickMeterRecode
         [DllImport("user32.dll")]
         [return: MarshalAs(UnmanagedType.Bool)]
         public static extern bool SetWindowPos(IntPtr hWnd, IntPtr hWndInsertAfter, int X, int Y, int cx, int cy, uint uFlags);
-        public class IpInfo
+
+        public class IpProperties
         {
-
-            [JsonProperty("ip")]
-            public string Ip { get; set; }
-
-            [JsonProperty("hostname")]
-            public string Hostname { get; set; }
-
-            [JsonProperty("city")]
-            public string City { get; set; }
-
-            [JsonProperty("region")]
-            public string Region { get; set; }
-
-            [JsonProperty("country")]
+            public string Status { get; set; }
             public string Country { get; set; }
-
-            [JsonProperty("loc")]
-            public string Loc { get; set; }
-
-            [JsonProperty("org")]
-            public string Org { get; set; }
-
-            [JsonProperty("postal")]
-            public string Postal { get; set; }
+            public string CountryCode { get; set; }
+            public string Region { get; set; }
+            public string RegionName { get; set; }
+            public string City { get; set; }
+            public string Zip { get; set; }
+            public string Lat { get; set; }
+            public string Lon { get; set; }
+            public string TimeZone { get; set; }
+            public string ISP { get; set; }
+            public string ORG { get; set; }
+            public string AS { get; set; }
+            public string Query { get; set; }
         }
 
         string country = "";
@@ -164,22 +154,49 @@ namespace tickMeterRecode
             }
         }
 
-        public string GetUserCountryByIp(string ip)
+        public string IPRequestHelper(string url)
         {
-            IpInfo ipInfo = new IpInfo();
-            try
+            HttpWebRequest objRequest = (HttpWebRequest)WebRequest.Create(url);
+            HttpWebResponse objResponse = (HttpWebResponse)objRequest.GetResponse();
+
+            StreamReader responseStream = new StreamReader(objResponse.GetResponseStream());
+            string responseRead = responseStream.ReadToEnd();
+
+            responseStream.Close();
+            responseStream.Dispose();
+
+            return responseRead;
+        }
+
+        public IpProperties GetCountryByIP(string ipAddress)
+        {
+            string ipResponse = IPRequestHelper("http://ip-api.com/xml/" + ipAddress);
+            using (TextReader sr = new StringReader(ipResponse))
             {
-                string info = new WebClient().DownloadString("http://ipinfo.io/" + ip);
-                ipInfo = JsonConvert.DeserializeObject<IpInfo>(info);
-                RegionInfo myRI1 = new RegionInfo(ipInfo.Country);
-                ipInfo.Country = myRI1.EnglishName;
+                using (System.Data.DataSet dataBase = new System.Data.DataSet())
+                {
+                    IpProperties ipProperties = new IpProperties();
+                    dataBase.ReadXml(sr);
+                    ipProperties.Status = dataBase.Tables[0].Rows[0][0].ToString();
+                    ipProperties.Country = dataBase.Tables[0].Rows[0][1].ToString();
+                    ipProperties.CountryCode = dataBase.Tables[0].Rows[0][2].ToString();
+                    ipProperties.Region = dataBase.Tables[0].Rows[0][3].ToString();
+                    ipProperties.RegionName = dataBase.Tables[0].Rows[0][4].ToString();
+                    ipProperties.City = dataBase.Tables[0].Rows[0][5].ToString();
+                    ipProperties.Zip = dataBase.Tables[0].Rows[0][6].ToString();
+                    ipProperties.Lat = dataBase.Tables[0].Rows[0][7].ToString();
+                    ipProperties.Lon = dataBase.Tables[0].Rows[0][8].ToString();
+                    ipProperties.TimeZone = dataBase.Tables[0].Rows[0][9].ToString();
+                    ipProperties.ISP = dataBase.Tables[0].Rows[0][10].ToString();
+                    ipProperties.ORG = dataBase.Tables[0].Rows[0][11].ToString();
+                    ipProperties.AS = dataBase.Tables[0].Rows[0][12].ToString();
+                    ipProperties.Query = dataBase.Tables[0].Rows[0][13].ToString();
+
+                    country = ipProperties.Country;
+
+                    return ipProperties;
+                }
             }
-            catch (Exception)
-            {
-                ipInfo.Country = null;
-            }
-            country = ipInfo.Country;
-            return ipInfo.Country;
         }
 
         private void panelTitle_MouseMove(object sender, MouseEventArgs e)
@@ -363,7 +380,7 @@ namespace tickMeterRecode
             {
                 await Task.Run(
                    () => {
-                       labelCountry.Invoke(new Action(() => labelCountry.Text = GetUserCountryByIp(server)));
+                       labelCountry.Invoke(new Action(() => labelCountry.Text = GetCountryByIP(server).Country));
                    });
             }
 

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(tickMeterForm));
             this.panelBackground = new System.Windows.Forms.Panel();
+            this.labelCountry = new System.Windows.Forms.Label();
             this.dropdownCover = new ns1.BunifuDropdown();
             this.pingLabel = new System.Windows.Forms.Label();
             this.updlLabel = new System.Windows.Forms.Label();
@@ -66,7 +67,6 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.timer3 = new System.Windows.Forms.Timer(this.components);
-            this.labelCountry = new System.Windows.Forms.Label();
             this.panelBackground.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panel1.SuspendLayout();
@@ -111,6 +111,16 @@
             this.panelBackground.Name = "panelBackground";
             this.panelBackground.Size = new System.Drawing.Size(747, 356);
             this.panelBackground.TabIndex = 0;
+            // 
+            // labelCountry
+            // 
+            this.labelCountry.AutoSize = true;
+            this.labelCountry.Location = new System.Drawing.Point(214, 253);
+            this.labelCountry.Name = "labelCountry";
+            this.labelCountry.Size = new System.Drawing.Size(13, 13);
+            this.labelCountry.TabIndex = 36;
+            this.labelCountry.Text = "0";
+            this.labelCountry.Visible = false;
             // 
             // dropdownCover
             // 
@@ -492,16 +502,6 @@
             this.timer3.Enabled = true;
             this.timer3.Interval = 5000;
             this.timer3.Tick += new System.EventHandler(this.timer3_Tick);
-            // 
-            // labelCountry
-            // 
-            this.labelCountry.AutoSize = true;
-            this.labelCountry.Location = new System.Drawing.Point(214, 253);
-            this.labelCountry.Name = "labelCountry";
-            this.labelCountry.Size = new System.Drawing.Size(13, 13);
-            this.labelCountry.TabIndex = 36;
-            this.labelCountry.Text = "0";
-            this.labelCountry.Visible = false;
             // 
             // tickMeterForm
             // 

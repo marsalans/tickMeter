@@ -41,9 +41,6 @@
     <Reference Include="Bunifu_UI_v1.52">
       <HintPath>..\..\..\..\..\Desktop\Games &amp; Others\.NET projektek\v_C# témák\Bunifu_UI_v1.52.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\dependencies\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="PcapDotNet.Analysis">
       <HintPath>..\dependencies\PcapDotNet.Analysis.dll</HintPath>
     </Reference>
